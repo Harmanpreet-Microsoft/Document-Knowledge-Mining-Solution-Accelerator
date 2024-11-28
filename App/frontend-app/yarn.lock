@@ -5963,7 +5963,7 @@ kleur@^3.0.3:
     "@fluentai/reference" "^0.8.0"
     "@fluentai/textarea" "^0.5.0"
     "@fluentui/react" "^8.120.9"
-    "@fluentui/react-components" "^9.46.4"
+    "@fluentui/react-components" "^9.56.3"
     "@fluentui/react-datepicker-compat" "^0.4.51"
     "@fluentui/react-file-type-icons" "^8.10.4"
     "@fluentui/react-icons" "^2.0.216"
