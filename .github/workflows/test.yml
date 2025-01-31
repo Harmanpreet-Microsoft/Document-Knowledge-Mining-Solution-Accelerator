@@ -1,0 +1,41 @@
+name: Unit Tests - DKM
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
+
+jobs:
+
+  frontend_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        working-directory: ./App/frontend-app
+        run: |
+          npm install --legacy-peer-deps || echo "Warning: Dependency installation failed. Proceeding."
+      - name: Run tests for Frontend App with coverage
+        working-directory: ./App/frontend-app
+        run: |
+          if find src -type f \( -name "*.test.tsx" -o -name "*.spec.tsx" -o -name "*.test.ts" -o -name "*.spec.ts" \) | grep -q .; then
+            echo "Test files found. Proceeding with tests."
+            npx jest --coverage --coverageDirectory=coverage --detectOpenHandles
+          else
+            echo "No test files found in Frontend App. Skipping tests."
+          fi
