@@ -29,6 +29,7 @@ jobs:
       - name: Install dependencies
         working-directory: ./App/frontend-app
         run: |
+          npm install @testing-library/react @testing-library/jest-dom @testing-library/user-event --save-dev
           npm install --legacy-peer-deps || echo "Warning: Dependency installation failed. Proceeding."
       - name: Run tests for Frontend App with coverage
         working-directory: ./App/frontend-app
